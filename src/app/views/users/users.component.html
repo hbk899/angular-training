@@ -1,0 +1,73 @@
+<div class="container mt-2">
+
+
+    <div *ngFor=" let user of users ; let i = index ">
+
+        <div class="row">
+            <app-user-card [userDetail]="user" [index]="i" (deleteEvent)="onDelete($event)"></app-user-card>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <form [formGroup]="userDetailsForm">
+            <div class="form-group">
+                <label>User Name </label>
+                <input formControlName="name" type="text">
+
+                <div
+                    *ngIf="!userDetailsForm.controls.name.valid && (userDetailsForm.controls.name.dirty || userDetailsForm.controls.name.touched)">
+                    <small *ngIf="userDetailsForm.controls.name.errors?.required" class="invalid">Please provide User
+                        Name</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label">User Age</label>
+                <input formControlName="age" type="number">
+
+            </div>
+
+            <button [disabled]="!userDetailsForm.valid" (click)="onAddUser()"> Add user</button>
+
+
+        </form>
+
+    </div>
+
+
+    <div *ngFor=" let item of todoList ; let i = index ">
+
+        <div class="row">
+            <app-todo [todoDetail]="item" (deleteEvent)="deleteTodo(i)"></app-todo>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <form [formGroup]="todoForm">
+            <div class="form-group">
+                <label>Task Name </label>
+                <input formControlName="name" type="text">
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Task Assigned to</label>
+                <input formControlName="assignedTo" type="text">
+
+            </div>
+
+            <div class="form-group">
+                <button [disabled]="todoForm.invalid" (click)="onAddTodo()">
+                    Add to list
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

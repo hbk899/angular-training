@@ -1,0 +1,11 @@
+.userCard {
+    width: 300px;
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid rgb(85, 85, 8);
+    border-radius: 20px;
+
+}
+.userCard:hover {
+    background-color: rgb(230, 223, 214) !important;
+}
